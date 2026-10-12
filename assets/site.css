@@ -1,0 +1,151 @@
+/* Estilos de onisoft.net (los copia scripts/build-web.mjs). Mismos tokens que src/styles.css del juego. */
+:root {
+  --bg: #0d1b2a;
+  --bg-card: #13263b;
+  --celeste: #74acdf;
+  --celeste-dark: #4a87bf;
+  --sol: #f6b40e;
+  --sol-dark: #85340a;
+  --paper: #f4ecd8;
+  --paper-ink: #2b2118;
+  --ink: #e9eef5;
+  --muted: #8fa3bf;
+  --radius: 18px;
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: var(--sol); }
+h1, h2, h3 { font-family: var(--font-serif); line-height: 1.15; margin: 0 0 .4em; }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 .8em; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+.sol { color: var(--sol); }
+section { margin: 56px 0; }
+.section__title { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+.section__lead { color: var(--muted); max-width: 68ch; }
+
+/* Botones (como .btn--primary del juego) */
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+}
+.btn--primary {
+  background: var(--celeste);
+  color: var(--bg);
+  box-shadow: 0 4px 0 var(--celeste-dark);
+  transition: transform .12s, box-shadow .12s;
+}
+.btn--primary:hover { transform: translateY(-1px); }
+.btn--primary:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--celeste-dark); }
+.btn--soon { border: 2px dashed var(--muted); color: var(--muted); cursor: default; }
+
+/* Barra superior de la página del juego */
+.topbar { padding-top: 16px; }
+.topbar__home {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--ink); text-decoration: none; font-family: var(--font-serif); font-weight: 700;
+}
+
+/* Hero */
+.hero { padding: 48px 0 16px; }
+.hero--studio { text-align: center; padding-top: 72px; }
+.hero__logo { width: min(560px, 100%); margin: 0 auto; }
+.hero--game { display: grid; gap: 28px; }
+.hero__art { border-radius: var(--radius); box-shadow: 0 12px 40px rgba(0, 0, 0, .4); }
+.hero__text h1 { font-size: clamp(2.6rem, 8vw, 4rem); margin-bottom: .2em; }
+.hero__pitch { font-family: var(--font-serif); font-size: 1.3rem; color: var(--paper); }
+.hero__facts { color: var(--muted); font-weight: 700; letter-spacing: .03em; }
+@media (min-width: 860px) {
+  .hero--game { grid-template-columns: 1.3fr 1fr; align-items: center; }
+}
+
+/* Tarjeta de juego en la landing (estilo carta: papel y tinta) */
+.game-card {
+  display: grid;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .4);
+}
+.game-card__body { padding: 24px; }
+.game-card__body h3 { font-size: 1.8rem; }
+.game-card__meta { color: #6b5d48; font-size: .9rem; font-weight: 700; }
+@media (min-width: 860px) {
+  .game-card { grid-template-columns: 1.2fr 1fr; align-items: center; }
+  .game-card__art img { height: 100%; object-fit: cover; }
+}
+
+/* Indicadores */
+.resources { display: grid; gap: 16px; margin-top: 24px; }
+@media (min-width: 700px) { .resources { grid-template-columns: 1fr 1fr; } }
+.resource {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--bg-card); border-radius: var(--radius); padding: 18px;
+}
+.resource__icon {
+  flex: none; display: grid; place-items: center;
+  width: 64px; height: 64px; border-radius: 16px; background: var(--celeste);
+}
+.resource p { color: var(--muted); margin: 0; }
+
+/* Capturas: carrusel horizontal en el teléfono, grilla en pantallas anchas */
+.shots {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 62%;
+  gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px;
+}
+.shots li { scroll-snap-align: start; }
+.shots img { border-radius: 14px; border: 1px solid rgba(255, 255, 255, .08); }
+@media (min-width: 860px) {
+  .shots { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); overflow: visible; }
+}
+
+.trailer { width: 100%; border-radius: var(--radius); background: #000; }
+
+/* Expansiones (como las cartas de la tienda del juego) */
+.packs { display: grid; gap: 14px; margin-top: 24px; }
+@media (min-width: 700px) { .packs { grid-template-columns: 1fr 1fr; } }
+.pack {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--paper); color: var(--paper-ink); border-radius: var(--radius); padding: 18px;
+}
+.pack__emoji { font-size: 2rem; line-height: 1; }
+.pack p { margin: 0 0 .4em; }
+.pack__meta { font-size: .9rem; font-weight: 700; color: #6b5d48; }
+
+/* Llamado final */
+.cta { text-align: center; display: grid; justify-items: center; gap: 12px; }
+.cta img { border-radius: 22px; }
+.cta > p:first-of-type { font-family: var(--font-serif); font-size: 1.8rem; margin: 0; }
+.cta__fine { color: var(--muted); font-size: .9rem; }
+
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  margin-top: 72px; padding: 28px 16px 40px; text-align: center; font-size: .95rem;
+}
+.footer__fine { color: var(--muted); font-size: .85rem; max-width: 60ch; margin-left: auto; margin-right: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
