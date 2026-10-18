@@ -1,0 +1,281 @@
+/* Página de MegaTruco en onisoft.net: estética "Boliche de noche" (madera, paño, farol y filete). */
+@font-face {
+  font-family: 'Lobster';
+  src: url('lobster.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  --wood: #2b1d14;
+  --wood-2: #3a2719;
+  --pano: #1f4d3a;
+  --pano-2: #2a6b50;
+  --cream: #f1e4c6;
+  --cream-dim: #d9c8a4;
+  --amber: #e8a33d;
+  --red: #c8323c;
+  --sol: #f6b40e;
+  --ink: #2b2118;
+  --display: 'Lobster', Georgia, serif;
+  --body: Georgia, 'Times New Roman', serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(232, 163, 61, 0.22), transparent 55%),
+    var(--wood);
+  color: var(--cream);
+  font: 17px/1.6 var(--body);
+}
+
+a { color: var(--amber); }
+
+img, svg { max-width: 100%; height: auto; }
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.topbar { padding-top: 16px; }
+
+.topbar__home {
+  color: var(--cream-dim);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.topbar__home:hover { color: var(--amber); }
+
+/* ---------- Portada ---------- */
+.hero {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0 8px;
+}
+
+.hero__art {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35);
+}
+
+.hero h1 {
+  margin: 0;
+  font: 400 clamp(2.6rem, 9vw, 4rem)/1.05 var(--display);
+  color: var(--red);
+  text-shadow: 0 3px 0 #4a0e16, 0 0 2px var(--cream);
+}
+
+.hero__pitch {
+  margin: 10px 0 8px;
+  font-size: 1.15rem;
+}
+
+.hero__facts {
+  margin: 0 0 18px;
+  color: var(--amber);
+  font-weight: 700;
+}
+
+@media (min-width: 860px) {
+  .hero { grid-template-columns: 1.2fr 1fr; }
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font: 700 1rem var(--body);
+  text-decoration: none;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.btn--primary { background: var(--amber); color: var(--ink); }
+.btn--primary:hover { background: var(--sol); }
+
+.btn--soon {
+  background: var(--wood-2);
+  color: var(--cream-dim);
+  border: 2px dashed var(--cream-dim);
+  box-shadow: none;
+  cursor: default;
+}
+
+/* ---------- Secciones ---------- */
+section { padding: 28px 0 8px; }
+
+.section__title {
+  margin: 0 0 8px;
+  font: 400 clamp(1.8rem, 6vw, 2.3rem)/1.1 var(--display);
+  color: var(--amber);
+}
+
+.section__lead {
+  margin: 0 0 18px;
+  max-width: 760px;
+  color: var(--cream-dim);
+}
+
+.features, .cast, .packs, .shots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.features, .packs {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 720px) {
+  .features, .packs { grid-template-columns: 1fr 1fr; }
+}
+
+.feature, .pack {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  background: var(--pano);
+  border: 2px solid rgba(232, 163, 61, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.feature h3, .pack h3, .rival h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: var(--cream);
+}
+
+.feature p, .pack p, .rival p {
+  margin: 0;
+  color: var(--cream-dim);
+  font-size: 0.97rem;
+}
+
+.feature__icon, .pack__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  background: var(--cream);
+  border-radius: 14px;
+}
+
+.pack__meta {
+  margin-top: 6px !important;
+  color: var(--amber) !important;
+  font-weight: 700;
+}
+
+/* ---------- Capturas ---------- */
+.shots {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+}
+
+.shots li {
+  flex: none;
+  width: min(62vw, 240px);
+  scroll-snap-align: start;
+}
+
+.shots img {
+  display: block;
+  border-radius: 16px;
+  border: 3px solid var(--wood-2);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Rivales ---------- */
+.cast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.rival {
+  text-align: center;
+  padding: 14px 10px;
+  background: var(--wood-2);
+  border-radius: 16px;
+}
+
+.rival svg {
+  display: block;
+  margin: 0 auto 8px;
+  width: 96px;
+  height: 96px;
+}
+
+.rival--boss { outline: 2px solid var(--sol); }
+
+/* ---------- Cierre ---------- */
+.cta {
+  text-align: center;
+  padding: 36px 0 12px;
+}
+
+.cta img { border-radius: 22px; }
+
+.cta p:first-of-type {
+  margin: 10px 0 14px;
+  font: 400 2rem var(--display);
+  color: var(--red);
+  text-shadow: 0 2px 0 #4a0e16;
+}
+
+.cta__fine {
+  margin-top: 14px;
+  color: var(--cream-dim);
+  font-size: 0.9rem;
+}
+
+.footer {
+  max-width: 1040px;
+  margin: 36px auto 0;
+  padding: 20px 16px 36px;
+  border-top: 1px solid rgba(241, 228, 198, 0.15);
+  text-align: center;
+}
+
+.footer p { margin: 6px 0; }
+
+.footer__fine {
+  color: var(--cream-dim);
+  font-size: 0.85rem;
+}
+
+/* ---------- Política de privacidad ---------- */
+.legal {
+  margin: 20px 0;
+  padding: 24px 20px;
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: 16px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+.legal h1 {
+  margin: 0 0 4px;
+  font: 400 2rem/1.15 var(--display);
+  color: var(--red);
+}
+
+.legal h2 { margin: 26px 0 8px; font-size: 1.15rem; }
+.legal a { color: var(--red); }
+.legal .date { margin: 0 0 16px; color: #6b5a48; }
